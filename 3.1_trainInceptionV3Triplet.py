@@ -292,7 +292,7 @@ def lr_schedule(epoch):
     return lr
 
 # define optimizer
-opt = keras.optimizers.Adam(lr=lr_schedule(0))
+opt = keras.optimizers.Adam(lr=lr_schedule(50))
 
 # Create call backs
 lr_scheduler = LearningRateScheduler(lr_schedule)
@@ -303,7 +303,7 @@ callbacks = [lr_reducer, lr_scheduler]
 triplet_model.compile(optimizer=opt, loss=triplet_loss)
 
 # fit the mode
-history = triplet_model.fit_generator(train_generator, steps_per_epoch=74, epochs=200,
+history = triplet_model.fit_generator(train_generator, steps_per_epoch=74, epochs=50,
                                       validation_data=val_generator, validation_steps=48,
                                       verbose=2, callbacks=callbacks)
 
