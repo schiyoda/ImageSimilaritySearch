@@ -279,7 +279,8 @@ triplet_model.summary()
 # define learning scheduler
 def lr_schedule(epoch):
     """ Learning rate schedule """
-    lr = 1e-3
+    #lr = 1e-3
+    lr = 1e-4
     if epoch > 80:
         lr *= 2e-1
     elif epoch > 60:
@@ -292,7 +293,7 @@ def lr_schedule(epoch):
     return lr
 
 # define optimizer
-opt = keras.optimizers.Adam(lr=lr_schedule(50))
+opt = keras.optimizers.Adam(lr=lr_schedule(0))
 
 # Create call backs
 lr_scheduler = LearningRateScheduler(lr_schedule)
